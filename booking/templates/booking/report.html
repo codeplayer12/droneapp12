@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Project Name</th>
+      <th>Status</th>
+      <th>Report</th>
+    </tr>
+  </thead>
+  {% if reports %} {% for report in reports %}
+  <tbody>
+    <tr>
+      <td>{{report.date}}</td>
+      <td>{{report.project_name}}</td>
+      <td>{{report.project_name.status}}</td>
+      <td><a href="">{{report.report.url}}</a></td>
+    </tr>
+    {% endfor %} {% else %}
+    <tr>
+      <td colspan="4">No Reports available</td>
+    </tr>
+  </tbody>
+  {% endif %}
+</table>
+{% endblock content %}

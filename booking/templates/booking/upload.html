@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<h1>New Project</h1>
+
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="name" class="form-label">Name of Project</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      id="name"
+      aria-describedby="nameHelp"
+    />
+    <div id="nameHelp" class="form-text">Enter the name of your project</div>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <select name="category" class="form-control">
+      <option value="None">Select a category...</option>
+      {% for category in categories %}
+      <option value="{{category.id}}" name="'category">
+        {{category.name}}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="images" class="form-label">Images</label>
+    <input
+      type="file"
+      class="form-control"
+      multiple
+      name="images"
+      id="images"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary p-3">Submit</button>
+</form>
+{% endblock content %}

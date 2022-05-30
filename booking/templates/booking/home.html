@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row mt-5">
+  {% if count %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects: {{count}}</h5>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects: 0</h5>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if pending %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects Pending: {{pending}}</h5>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects Pending: 0</h5>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if done %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects Done: {{done}}</h5>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"># of Projects Done: 0</h5>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  {% if projects %} {% for project in projects %}
+  <tbody>
+    <tr>
+      <td>{{project.project_name}}</td>
+      <td>{{project.status}}</td>
+    </tr>
+  </tbody>
+  {% endfor %} {% else %}
+  <tbody>
+    <tr>
+      <td colspan="2">No Projects Yet</td>
+    </tr>
+  </tbody>
+  {% endif %}
+</table>
+{% endblock content %}

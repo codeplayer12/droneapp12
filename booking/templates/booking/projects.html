@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Images</th>
+    </tr>
+  </thead>
+  {% if projects %} {% for project in projects %}
+  <tbody>
+    <tr>
+      <td>{{project.project_name}}</td>
+      <td>{{project.category}}</td>
+      <td>{{project.status}}</td>
+      <td>{{project.user.photo_set.count}}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <tr>
+      <td colspan="5">No Projects available</td>
+    </tr>
+  </tbody>
+  {% endif %}
+</table>
+{% endblock content %}
